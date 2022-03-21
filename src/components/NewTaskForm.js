@@ -6,19 +6,14 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
 
   function handleSubmit(e) {
     e.preventDefault();
-    const text = e.target[0].value;
-    const category = e.target[1].value;
-
-    const newTask = {
-      text: text,
+    onTaskFormSubmit({
+      text: details,
       category: category,
-    };
-    onTaskFormSubmit(newTask);
-    // console.log(e);
+    });
   }
 
   return (
-    <form onSubmit={(e) => handleSubmit(e)} className="new-task-form">
+    <form onSubmit={handleSubmit} className="new-task-form">
       <label>
         Details
         <input
@@ -29,7 +24,7 @@ function NewTaskForm({ categories, onTaskFormSubmit }) {
       </label>
       <label>
         Category
-        <select onChange={setCategory} name={category}>
+        <select onChange={(e) => setCategory(e.target.value)} name={category}>
           {categories
             .filter((category) => category !== 'All')
             .map((category) => (
