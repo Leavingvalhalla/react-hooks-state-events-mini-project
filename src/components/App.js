@@ -20,15 +20,7 @@ function App() {
     setSelectedCategory(currentCategory.innerHTML);
   }
 
-  function onTaskFormSubmit(e) {
-    e.preventDefault();
-    const text = e.target[0].value;
-    const category = e.target[1].value;
-
-    const newTask = {
-      text: text,
-      category: category,
-    };
+  function onTaskFormSubmit(newTask) {
     setTasks([...tasks, newTask]);
   }
 
